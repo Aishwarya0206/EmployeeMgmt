@@ -1,0 +1,59 @@
+@model IEnumerable<Department>
+@{
+    ViewBag.Title = "Employees & their department";
+}
+<h1>@ViewBag.Title</h1>
+@if(Model.Any()){
+<table class="table">
+    @foreach(var department in Model)
+    {
+        @foreach(var employee in department.Employees)
+        {
+            <tr>
+                <th>@Html.DisplayNameFor(model => department.Id)</th>
+                <th>@Html.DisplayNameFor(model => department.Name)</th>
+                <th>@Html.DisplayNameFor(model => department.Location)</th>
+                <th>@Html.DisplayNameFor(model => employee.FirstName)</th>
+                <th>@Html.DisplayNameFor(model => employee.LastName)</th>
+                <th>@Html.DisplayNameFor(model => employee.Gender)</th>
+                <th>@Html.DisplayNameFor(model => employee.Salary)</th>  
+            </tr>
+        }
+    }
+    @foreach(var department in Model)
+    {
+        @foreach(var employee in department.Employees)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => department.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => department.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => department.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => employee.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => employee.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => employee.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => employee.Salary)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=department.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id=department.Name }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=department.Location })
+            </td>
+            </tr>
+        }
+    }
+</table>
+}
+<div>@Html.ActionLink("New", "create")

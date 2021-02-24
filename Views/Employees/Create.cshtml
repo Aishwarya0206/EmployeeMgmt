@@ -1,0 +1,28 @@
+@model Employees
+@{
+    ViewBag.Title = "New Employee";
+}
+<h1>@ViewBag.Title</h1>
+@using(Html.BeginForm()){
+  <div class="form-group">
+    @Html.LabelFor(model => model.Id)
+    @Html.DropDownListFor(model => model.Id, (IEnumerable<SelectListItem>)ViewBag.Department, string.Empty, new { @class="form-control"}) 
+  </div>
+  <div class="form-group">
+    @Html.LabelFor(model => model.FirstName)
+    @Html.TextBoxFor(model => model.FirstName, new { @class="form-control"}) 
+  </div>
+  <div class="form-group">
+    @Html.LabelFor(model => model.LastName)
+    @Html.TextBoxFor(model => model.LastName, new { @class="form-control"}) 
+  </div>
+  <div class="form-group">
+    @Html.LabelFor(model => model.Gender)
+    @Html.TextBoxFor(model => model.Gender, new { @class="form-control"}) 
+  </div>
+  <div class="form-group">
+    @Html.LabelFor(model => model.Salary)
+    @Html.EditorFor(model => model.Salary, new { @class="form-control"}) 
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+}
